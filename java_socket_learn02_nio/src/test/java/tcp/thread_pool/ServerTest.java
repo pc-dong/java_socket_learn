@@ -1,8 +1,7 @@
-package tcp.nonblock;
+package tcp.thread_pool;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ServerTest {
     @Test
@@ -14,5 +13,8 @@ class ServerTest {
         Client client = new Client();
         String result = client.sendMessage("hello server", "localhost", port);
         Assertions.assertEquals("hello client", result);
+//
+        String result1 = client.sendMessage("hello server", "localhost", port);
+        Assertions.assertEquals("hello client", result1);
     }
 }

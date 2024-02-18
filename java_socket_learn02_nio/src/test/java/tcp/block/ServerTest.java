@@ -1,9 +1,7 @@
-package tcp.blocking;
+package tcp.block;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import tcp.block.Client;
-import tcp.block.Server;
 
 class ServerTest {
     @Test
