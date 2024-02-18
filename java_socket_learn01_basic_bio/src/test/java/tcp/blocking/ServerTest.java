@@ -1,4 +1,4 @@
-package tcp.basic;
+package tcp.blocking;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

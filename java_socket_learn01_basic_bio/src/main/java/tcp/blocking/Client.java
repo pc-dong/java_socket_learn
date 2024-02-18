@@ -1,4 +1,4 @@
-package tcp.basic;
+package tcp.blocking;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

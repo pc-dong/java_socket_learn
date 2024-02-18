@@ -1,4 +1,4 @@
-package tcp.basic;
+package tcp.blocking;
 
 import lombok.extern.slf4j.Slf4j;
 
