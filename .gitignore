@@ -26,3 +26,6 @@ replay_pid*
 /java_socket_learn01_basic_bio.iml
 /java_socket_learn01_basic_bio/build/
 /java_socket_learn01_basic_bio/.gradle/
+/java_socket_learn02_nio/build/
+/java_socket_learn02_nio/.gradle/
+/java_socket_learn02_nio.iml
