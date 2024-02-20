@@ -29,3 +29,6 @@ replay_pid*
 /java_socket_learn02_nio/build/
 /java_socket_learn02_nio/.gradle/
 /java_socket_learn02_nio.iml
+/java_socket_learn03_reactor_pattern/build/
+/java_socket_learn03_reactor_pattern/.gradle/
+/java_socket_learn03_reactor_pattern.iml
