@@ -7,10 +7,11 @@ import java.io.IOException;
 
 class ServerTest {
     @Test
-    void start() throws IOException {
+    void start() {
         int port = 6666;
         Server server = new Server(port);
         server.start();
+
 
         Client client = new Client();
         String result = client.sendMessage("hello server", "localhost", port);

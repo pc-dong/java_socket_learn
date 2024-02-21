@@ -14,11 +14,14 @@ public class WriteHandler implements EventHandler {
     public void handle(SelectionKey key) {
         SocketChannel socketChannel = (SocketChannel) key.channel();
         String message = (String) key.attachment();
+        log.info("WriteHandler: " + message);
         try {
-            socketChannel.write(wrap(message.getBytes()));
+            if (null != message && !message.isEmpty() && socketChannel.isOpen() && socketChannel.isConnected()) {
+                socketChannel.write(wrap(message.getBytes()));
+            }
             socketChannel.close();
         } catch (Exception e) {
-            log.error("Error occurred in WriteHandler: {}", e.getMessage());
+            log.error("Error occurred in WriteHandler:", e);
         }
     }
 }

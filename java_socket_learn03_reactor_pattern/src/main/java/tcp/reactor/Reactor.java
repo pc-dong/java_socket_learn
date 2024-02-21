@@ -20,8 +20,8 @@ public class Reactor {
 
     private final Map<Integer, EventHandler> registeredHandlers = new ConcurrentHashMap<>();
 
-    public Reactor() throws IOException {
-        this.demultiplexer = Selector.open();
+    public Reactor(Selector demultiplexer) throws IOException {
+        this.demultiplexer = demultiplexer;
     }
 
     public void registerHandler(int eventType, EventHandler handler) {
@@ -34,11 +34,12 @@ public class Reactor {
 
     public void registerChannel(int eventType, SelectableChannel channel) throws ClosedChannelException {
         channel.register(demultiplexer, eventType);
+        demultiplexer.wakeup();
     }
 
     public void dispatch() {
         running = true;
-        while (running) {
+        while (running && demultiplexer.isOpen()) {
             try {
                 demultiplexer.select();
                 var selectedKeys = demultiplexer.selectedKeys().iterator();
@@ -54,10 +55,12 @@ public class Reactor {
                 log.error("Error occurred in Reactor: {}", e.getMessage());
             }
         }
+        log.info("Reactor stopped");
     }
 
     public void stop() {
         running = false;
+
         try {
             this.demultiplexer.close();
         } catch (IOException e) {
