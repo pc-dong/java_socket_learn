@@ -20,8 +20,8 @@ public class Reactor {
 
     private final Map<Integer, EventHandler> registeredHandlers = new ConcurrentHashMap<>();
 
-    public Reactor(Selector demultiplexer) throws IOException {
-        this.demultiplexer = demultiplexer;
+    public Reactor() throws IOException {
+        this.demultiplexer = Selector.open();
     }
 
     public void registerHandler(int eventType, EventHandler handler) {

@@ -1,4 +1,4 @@
-package tcp.reactor.single_thread;
+package tcp.reactor.multi_reactor;
 
 import lombok.extern.slf4j.Slf4j;
 import tcp.reactor.Reactor;
@@ -27,8 +27,6 @@ public class Server {
                 serverSocketChannel.configureBlocking(false);
                 reactor = new Reactor();
                 reactor.registerHandler(SelectionKey.OP_ACCEPT, new AcceptHandler());
-                reactor.registerHandler(SelectionKey.OP_READ, new ReadHandler());
-                reactor.registerHandler(SelectionKey.OP_WRITE, new WriteHandler());
 
                 reactor.registerChannel(SelectionKey.OP_ACCEPT, serverSocketChannel);
                 reactor.dispatch();

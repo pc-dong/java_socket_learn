@@ -6,7 +6,6 @@ import tcp.reactor.Reactor;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 
 @Slf4j
@@ -24,10 +23,9 @@ public class Server {
         new Thread(() -> {
             try {
                 serverSocketChannel = ServerSocketChannel.open();
-                Selector selector = Selector.open();
                 serverSocketChannel.bind(new InetSocketAddress("localhost", port));
                 serverSocketChannel.configureBlocking(false);
-                reactor = new Reactor(selector);
+                reactor = new Reactor();
                 reactor.registerHandler(SelectionKey.OP_ACCEPT, new AcceptHandler());
                 reactor.registerHandler(SelectionKey.OP_READ, new ReadHandler());
                 reactor.registerHandler(SelectionKey.OP_WRITE, new WriteHandler());
