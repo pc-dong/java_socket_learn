@@ -32,3 +32,6 @@ replay_pid*
 /java_socket_learn03_reactor_pattern/build/
 /java_socket_learn03_reactor_pattern/.gradle/
 /java_socket_learn03_reactor_pattern.iml
+/java_socket_learn04_reactor_virtual_thread.iml
+/java_socket_learn04_reactor_virtual_thread/build/
+/java_socket_learn04_reactor_virtual_thread/.gradle/
